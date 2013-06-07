@@ -4,8 +4,8 @@ Torque 3D v3.0 For T3D MIT 3.0
 UPDATE NOTES
 --------------
 DNT 1.1 Update Notes
-1.	C++ T3D objects are now implemented in C#
-a.	The C++ InitPersist definitions in SimObjects are exposed as properties
+*	C++ T3D objects are now implemented in C#
+**	The C++ InitPersist definitions in SimObjects are exposed as properties
 i.	<co<Object> instance>.<InitPersist Field> = <String>
 ii.	Example: npc["HoldAndFire"] = true.AsString();
 b.	C++ Console Methods are now defined off the implemented C# class
