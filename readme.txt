@@ -1,3 +1,62 @@
+DNT 1.1 Update Notes
+1.  C++ T3D objects are now implemented in C#
+    a.	The C++ InitPersist definitions in SimObjects are exposed as properties
+        i.	<co<Object> instance>.<InitPersist Field> = <String>
+       ii.	Example: npc["HoldAndFire"] = true.AsString();
+    b.	C++ Console Methods are now defined off the implemented C# class
+        i.	<co<Object> instance>.<Some Console Function>(<Parameters>);
+       ii.	Example: npc.mountImage("LurkerWeaponImage", 0, true, "");
+      iii.	Full intellisense
+    c.	Class Hierarchy` follows the same Inheritance as C++ classes
+        i.	Example inheritance: coPlayerData -> coShapeBaseData->coGameBaseData->coSimDataBlock->coSimObject
+       ii.	Member functions are over-ridden properly through inheritance.
+    d.	Declaration and Initialization of the new object types
+        i.	co<Object> <name> = <string value>
+          	Example: coSimSet path = npc["path"];
+       ii.	co<Object> <name> = <unsigned integer value>
+            Example: uint targetnode = datablock["targetNode"].AsUint();
+      iii.	co<Object> <name> = <integer value>
+           	Example: coShapeBaseData datablock = shapebase.getDataBlock();
+    e.	Properties of the object can be referenced using []
+        i.	Example: npc["HoldAndFire"] = false.AsString();
+2.	Functions can now take the co<Object> types as parameters
+    a.	Example:
+        [Torque_Decorations.TorqueCallBack("", "AIPlayer", "getNearestPlayerTarget", "(%this)", 1, 2500, false)]
+        public int AIPlayergetNearestPlayerTarget(coAIPlayer npc)
+3.	Global variables now have shorthand notation
+    a.	bGlobals[<Variable Name>] - Sets or gets a script variable as a bool
+    b.	sGlobals[<Variable Name>] - Sets or gets a script variable as a string
+    c.	iGlobals[<Variable Name>] - Sets or gets a script variable as a integer
+    d.	fGlobals[<Variable Name>] - Sets or gets a script variable as a float
+    e.	dGlobals[<Variable Name>] - Sets or gets a script variable as a double
+4.	C# Containers have been expanded and now include:
+    a.	AngAxisF
+    b.	Box3F
+    c.	ColorF
+    d.	ColorI
+    e.	EaseF
+    f.	Point2F
+    g.	Point2I
+    h.	Point3F
+    i.	Point4F
+    j.	Polyhedron
+    k.	RectF
+    l.	RectI
+    m.	RectSpacingI
+    n.	TransformF
+    o.	Vector
+5.	Added C++ for AI detection to speed up finding targets using coAIPlayer
+    a.	Function Name: AISearchSimSet
+    b.	Parameters:
+        1.	Viewing Angle
+        2.	Distance
+        3.	SimSet of coPlayers to search
+        4.	SimSet to return what is found
+    c.	Example: npc.AISearchSimSet(180, 50, MobSearchGroup, MobSearchGroupResult);
+
+
+
+
 Torque 3D Project Manager 2.0 Set Up
 ------------------------------------
 
